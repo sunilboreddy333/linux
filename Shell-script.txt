@@ -1,0 +1,80 @@
+
+     ***************SHELL SCRIPT******************
+
+jason(jq) install 
+aws ec2 describe-vpcs | jq ".vpcs[].vpcid"
+whenyou see the [] brackets in json format it is called list in list we have multiple components
+
+
+file extension is .sh it recomended only for reference like it is a script file
+	      file.sh
+Below line is "SHEBANG LINE" in that file
+			#!/bin/bash
+shebang line means given commands will taken from /bin/bash/
+
+you can execute some ways like
+bash file.sh (you can execute without permissions) 
+./file.sh    (it will works only for executable permissions requires)
+
+when you give single quotes it will prints as it is you given
+A=10
+echo 'This is sunil $A'     ===> when you give this   
+This is sunil $A          ===> it will prints like this 
+
+
+when you given double quotes it will consider a variables also
+A=10
+echo "This is sunil $A"    ===> when you give this   
+This is sunil 10           ===> it will prints like this
+Types to declare 
+	A=10
+	 echo $A
+	 echo ${A}
+	 echo "${A}"
+	 echo $A && echo ${A} && echo "${A}"
+
+In jason format when you see squre brackets [] between the that brackets are list 
+
+	# aws describe-vpcs | jq ".Vpcs[] .VpcId"
+The above command will shows vpc id's
+ex:
+"vpc-fuhbvoq8w374rq38y4fg7q3bv" 
+"vpc-7834tfbv97uybr3vnoicr7uh3c"
+
+	# aws describe-vpcs | jq ".Vpcs[] .VpcId" -r
+ex: -r removes double quotes
+vpc-fuhbvoq8w374rq38y4fg7q3bv 
+vpc-7834tfbv97uybr3vnoicr7uh3c
+
+now we can make a new variable like A=10
+	# VPCS=$(aws describe-vpcs | jq ".Vpcs[] .VpcId" -r)
+
+now you can type only
+	# echo $VPCS
+ex:
+vpc-fuhbvoq8w374rq38y4fg7q3bv 
+vpc-7834tfbv97uybr3vnoicr7uh3c
+
+
+environment variables 
+
+directory level variables
+
+	********SPECIAL PARAMETERS
+$? ===>Error code of the last execution.0 is success.
+  $# ===>Number of parameters given to the script
+    $@ ===>
+      $* ===>
+ 
+echo $? ===>last executed command when it success it shows 0 or when it fails it showing some number except 0.
+
+
+
+
+
+
+
+
+
+
+
